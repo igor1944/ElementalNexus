@@ -1,0 +1,127 @@
+# ============================================================
+#  ElementalNexus — конфигурация
+#  Все сообщения поддерживают цветовые коды формата "&a".
+#  В сообщениях доступен плейсхолдер %prefix%.
+# ============================================================
+
+# Настройки маны
+mana:
+  max: 100.0              # Максимальный запас маны
+  initial: 100.0          # Начальное количество маны у нового игрока
+  regen-per-second: 2.0   # Восстановление маны в секунду
+
+# Интервал периодического сохранения данных игроков (в секундах)
+save-interval-seconds: 300
+
+# Обычные заклинания
+spells:
+  fireball:
+    name: "Огненный снаряд"
+    mana-cost: 15.0
+    cooldown-seconds: 5.0
+    damage: 8.0            # Урон снаряда
+    speed: 1.5             # Скорость полёта снаряда
+  wind_gust:
+    name: "Порыв ветра"
+    mana-cost: 12.0
+    cooldown-seconds: 6.0
+    radius: 6.0            # Радиус действия
+    knockback-power: 1.4   # Сила отбрасывания
+  water_wave:
+    name: "Водяная волна"
+    mana-cost: 14.0
+    cooldown-seconds: 7.0
+    radius: 6.0
+    slowness-duration-seconds: 4.0  # Длительность замедления
+    slowness-amplifier: 1           # Уровень эффекта замедления (0 = I)
+    knockback-power: 0.8            # Сила отбрасывания
+  lightning_strike:
+    name: "Удар молнии"
+    mana-cost: 25.0
+    cooldown-seconds: 10.0
+    range: 30.0            # Дальность поиска цели
+    damage: 10.0           # Урон по цели
+
+# Комбинации двух стихий (порядок стихий не важен)
+combos:
+  fire_wind:
+    name: "Огненный вихрь"
+    mana-cost: 30.0
+    cooldown-seconds: 15.0
+    radius: 6.0
+    damage: 8.0
+  fire_water:
+    name: "Паровой взрыв"
+    mana-cost: 28.0
+    cooldown-seconds: 14.0
+    radius: 5.0
+    knockback-power: 1.2
+    weakness-duration-seconds: 5.0  # Длительность слабости
+    weakness-amplifier: 0           # Уровень эффекта слабости (0 = I)
+  fire_lightning:
+    name: "Плазменный удар"
+    mana-cost: 35.0
+    cooldown-seconds: 18.0
+    range: 30.0
+    damage: 14.0
+  wind_water:
+    name: "Ледяной туман"
+    mana-cost: 26.0
+    cooldown-seconds: 14.0
+    radius: 7.0
+    slowness-duration-seconds: 6.0
+    slowness-amplifier: 1
+  wind_lightning:
+    name: "Грозовой порыв"
+    mana-cost: 32.0
+    cooldown-seconds: 16.0
+    radius: 8.0
+    knockback-power: 2.0
+    damage: 3.0
+  water_lightning:
+    name: "Электрический разряд"
+    mana-cost: 34.0
+    cooldown-seconds: 18.0
+    radius: 10.0
+    max-targets: 4         # Максимум целей для разряда
+    damage: 6.0
+
+# Сообщения игрокам (русский язык)
+messages:
+  prefix: "&6[ElementalNexus] &r"
+  no-permission: "%prefix%&cУ вас нет прав для использования этой команды."
+  players-only: "%prefix%&cЭта команда доступна только игрокам."
+  unknown-subcommand: "%prefix%&cНеизвестная подкоманда. Введите &e/magic&c для справки."
+  unknown-spell: "%prefix%&cНеизвестное заклинание: &e%spell%&c. Список заклинаний: &e/magic spells"
+  unknown-element: "%prefix%&cНеизвестная стихия: &e%element%&c. Доступные: fire/огонь, wind/ветер, water/вода, lightning/молния."
+  same-elements: "%prefix%&cДля комбинации нужно выбрать две разные стихии."
+  combination-not-found: "%prefix%&cДля стихий %first% и %second% комбинация не найдена."
+  mana-info: "%prefix%&bВаша мана: &f%current%&7/&f%max%"
+  not-enough-mana: "%prefix%&cНедостаточно маны! Требуется: &e%cost%&c, у вас: &e%current%&c."
+  spell-on-cooldown: "%prefix%&e%spell%&e перезаряжается ещё &6%time%&e сек."
+  spell-cancelled: "%prefix%&cИспользование заклинания было отменено."
+  cast-error: "%prefix%&cПроизошла ошибка при использовании заклинания. Сообщите администрации сервера."
+  reloaded: "%prefix%&aКонфигурация успешно перезагружена."
+  player-not-found: "%prefix%&cИгрок &e%player%&c не найден в сети."
+  invalid-number: "%prefix%&cНекорректное число: &e%value%&c."
+  mana-set: "%prefix%&aМана игрока &e%player%&a установлена на &b%mana%&a."
+  mana-added: "%prefix%&aМана игрока &e%player%&a изменена на &b%amount%&a, теперь: &b%mana%&a."
+  target-mana-set: "%prefix%&eВаша мана установлена на &b%mana%&e."
+  target-mana-added: "%prefix%&eВаша мана изменена на &b%amount%&e, теперь: &b%mana%&e."
+  usage-cast: "%prefix%&eИспользование: &6/magic cast <заклинание>"
+  usage-combine: "%prefix%&eИспользование: &6/magic combine <стихия1> <стихия2>&e, например: /magic combine fire wind"
+  usage-setmana: "%prefix%&eИспользование: &6/magic setmana <игрок> <количество>"
+  usage-addmana: "%prefix%&eИспользование: &6/magic addmana <игрок> <количество>"
+  help-header: "&6========== &eElementalNexus &6=========="
+  help-magic: "&e/magic &7— показать эту справку"
+  help-mana: "&e/magic mana &7— показать вашу ману"
+  help-spells: "&e/magic spells &7— список заклинаний и комбинаций"
+  help-cast: "&e/magic cast <заклинание> &7— использовать заклинание"
+  help-combine: "&e/magic combine <стихия1> <стихия2> &7— комбинировать стихии (например: fire wind)"
+  help-reload: "&e/magic reload &7— перезагрузить конфигурацию &8(только для админов)"
+  help-setmana: "&e/magic setmana <игрок> <количество> &7— установить ману &8(только для админов)"
+  help-addmana: "&e/magic addmana <игрок> <количество> &7— добавить ману &8(только для админов)"
+  spells-header: "&6=== &eЗаклинания &6==="
+  spells-entry: "&e%id% &7(%name%&7) &8— &b%cost% маны&7, перезарядка &b%cooldown%с"
+  combos-header: "&6=== &eКомбинации стихий &6==="
+  combos-entry: "&e%first% + %second% &8→ &e%id% &7(%name%&7) &8— &b%cost% маны&7, перезарядка &b%cooldown%с"

@@ -1,0 +1,19 @@
+name: ElementalNexus
+version: 1.0.0
+main: ru.elementalnexus.ElementalNexusPlugin
+api-version: 1.18
+author: ElementalNexus Team
+description: "Магическая система стихий: мана, заклинания и комбинации элементов."
+commands:
+  magic:
+    description: Главная команда плагина ElementalNexus.
+    usage: /magic
+permissions:
+  elementalnexus.use:
+    description: Позволяет использовать магию и базовые команды /magic.
+    default: true
+  elementalnexus.admin:
+    description: Административные команды ElementalNexus (reload, setmana, addmana).
+    default: op
+    children:
+      elementalnexus.use: true
